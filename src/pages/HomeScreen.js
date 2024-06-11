@@ -1,11 +1,10 @@
 import React from 'react';
-import { FlatList, StyleSheet, View } from 'react-native';
+import { FlatList, View, StyleSheet } from 'react-native';
 import VignetteImage from '../components/ImageVignette';
-import videoGames from '../data/VideoGames';
 
-const HomeScreen = () => (
+const HomeScreen = ({ games }) => (
     <FlatList
-        data={videoGames}
+        data={games}
         renderItem={({ item }) => (
             <View style={styles.gameItem}>
                 <VignetteImage game={item} />
@@ -19,6 +18,7 @@ const HomeScreen = () => (
 
 const styles = StyleSheet.create({
     list: {
+        backgroundColor: '#f8f8f8',
         padding: 10,
     },
     gameItem: {

@@ -12,14 +12,16 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        padding: 20,
-        backgroundColor: '#f8f8f8',
+        padding: 10,
+        backgroundColor: '#6200ee',
+        alignItems: 'center',
     },
     username: {
+        color: 'white',
         fontSize: 18,
-        fontWeight: 'bold',
     },
     gameCount: {
+        color: 'white',
         fontSize: 18,
     },
 });
