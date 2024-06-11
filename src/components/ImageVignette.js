@@ -1,19 +1,32 @@
 import React from 'react';
-import { ImageBackground, StyleSheet, Text, View } from 'react-native';
+import { ImageBackground, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
-const VignetteImage = ({ game }) => (
-    <View style={styles.container}>
-        <Text style={styles.title} numberOfLines={1}>{game.name}</Text>
-        <ImageBackground source={{ uri: game.image }} style={styles.image}>
-            <View style={styles.footer}>
-                <Text style={styles.price}>{game.price}€</Text>
-                <Text style={styles.category}>#{game.catégorie}</Text>
-            </View>
-        </ImageBackground>
-    </View>
-);
+const VignetteImage = ({ game, onDelete }) => {
+    const imageSource = { uri: game.image };
+
+
+    return (
+        <View style={styles.container}>
+            <Text style={styles.title} numberOfLines={1}>{game.name}</Text>
+            <ImageBackground source={imageSource} style={styles.image}>
+                <View style={styles.footer}>
+                    <Text style={styles.price}>{game.price}€</Text>
+                    <Text style={styles.category}>#{game.catégorie}</Text>
+                </View>
+            </ImageBackground>
+            <TouchableOpacity onPress={() => onDelete(game.id)} style={styles.deleteButton}>
+                <Ionicons name="trash-bin" size={24} color="red" />
+            </TouchableOpacity>
+        </View>
+    );
+};
 
 const styles = StyleSheet.create({
+    deleteButton: {
+        alignSelf: 'center',
+        marginTop: 10,
+    },
     container: {
         flex: 1,
         margin: 10,
@@ -23,7 +36,7 @@ const styles = StyleSheet.create({
         shadowColor: '#000',
         shadowOpacity: 0.2,
         shadowRadius: 5,
-        shadowOffset: { width: 0, height: 2 },
+        shadowOffset: {width: 0, height: 2},
         borderWidth: 1,
     },
     title: {

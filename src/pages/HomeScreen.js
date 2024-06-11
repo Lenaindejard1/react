@@ -2,12 +2,12 @@ import React from 'react';
 import { FlatList, View, StyleSheet } from 'react-native';
 import VignetteImage from '../components/ImageVignette';
 
-const HomeScreen = ({ games }) => (
+const HomeScreen = ({ games, deleteGame }) => (
     <FlatList
         data={games}
         renderItem={({ item }) => (
             <View style={styles.gameItem}>
-                <VignetteImage game={item} />
+                <VignetteImage game={item} onDelete={deleteGame} />
             </View>
         )}
         keyExtractor={item => item.id.toString()}

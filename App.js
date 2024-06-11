@@ -23,11 +23,22 @@ const App = () => {
         setGames(newGames);
         setFilteredGames(newGames);
     };
+    const deleteGame = (id) => {
+        const newGames = games.filter(game => game.id !== id);
+        setGames(newGames);
+        if (categoryFilter === 'all' || categoryFilter === '') {
+            setFilteredGames(newGames);
+        } else {
+            setFilteredGames(newGames.filter(game => game.catégorie === categoryFilter));
+        }
+    };
 
     const filterGames = (category) => {
         setCategoryFilter(category);
-        if (category === '') {
+        if (category === 'all' || category === '') {
             setFilteredGames(games);
+        } else {
+            setFilteredGames(games.filter(game => game.catégorie === category));
         }
     };
 
@@ -57,7 +68,7 @@ const App = () => {
                 onSort={sortGames}
                 sortOption={sortOption}
             />
-            <HomeScreen games={filteredGames} />
+            <HomeScreen games={filteredGames } deleteGame={deleteGame} />
             <TouchableOpacity
                 style={styles.addButton}
                 onPress={() => setIsModalVisible(true)}

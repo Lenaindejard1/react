@@ -96,6 +96,7 @@ const styles = StyleSheet.create({
     closeButton: {
         alignSelf: 'flex-start',
         marginBottom: 10,
+        borderRadius:10,
     },
     input: {
         height: 40,
@@ -109,6 +110,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginTop: 10,
+        borderRadius:10,
     },
     imageText: {
         marginTop: 10,
