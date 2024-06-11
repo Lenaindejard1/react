@@ -16,7 +16,7 @@ const App = () => {
 
     useEffect(() => {
         filterAndSortGames();
-    }, [categoryFilter, sortOption]);
+    }, [categoryFilter, sortOption, games]);
 
     const addGame = (game) => {
         const newGames = [...games, { ...game, id: games.length + 1 }];
@@ -26,6 +26,9 @@ const App = () => {
 
     const filterGames = (category) => {
         setCategoryFilter(category);
+        if (category === '') {
+            setFilteredGames(games);
+        }
     };
 
     const sortGames = (option) => {
@@ -61,20 +64,12 @@ const App = () => {
             >
                 <Ionicons name="add" size={24} color="white" />
             </TouchableOpacity>
-            <Modal
+            <AddGameModal
                 visible={isModalVisible}
-                transparent={true}
-                animationType="slide"
-            >
-                <View style={styles.modalBackground}>
-                    <View style={styles.modalContainer}>
-                        <AddGameModal
-                            onClose={() => setIsModalVisible(false)}
-                            onAdd={addGame}
-                        />
-                    </View>
-                </View>
-            </Modal>
+                onClose={() => setIsModalVisible(false)}
+                onAdd={addGame}
+                existingCategories={[...new Set(games.map((game) => game.catégorie))]}
+            />
         </View>
     );
 };

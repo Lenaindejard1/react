@@ -21,7 +21,7 @@ const FilterAndSort = ({ categories, onFilter, onSort, sortOption }) => {
                     {categories.map((category) => (
                         <Picker.Item key={category} label={category} value={category} />
                     ))}
-                </Picker>
+                    </Picker>
             </View>
             <View style={styles.pickerContainer}>
                 <Picker

@@ -6,7 +6,7 @@ const VignetteImage = ({ game }) => (
         <Text style={styles.title} numberOfLines={1}>{game.name}</Text>
         <ImageBackground source={{ uri: game.image }} style={styles.image}>
             <View style={styles.footer}>
-                <Text style={styles.price}>{game.price}</Text>
+                <Text style={styles.price}>{game.price}€</Text>
                 <Text style={styles.category}>#{game.catégorie}</Text>
             </View>
         </ImageBackground>
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.2,
         shadowRadius: 5,
         shadowOffset: { width: 0, height: 2 },
-        borderWidth: 5,
+        borderWidth: 1,
     },
     title: {
         fontSize: 16,
